@@ -1,0 +1,208 @@
+Using pre-set license
+Built from '2021.1/staging' branch; Version is '2021.1.7f1 (d91830b65d9b) revision 14227504'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Education; OS build 19043.1165; Version 2009; 64bit' Language: 'en' Physical Memory: 16247 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2021.1.7f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/GameSim/UnityProjects/MissleCommandDemo
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+58527
+Successfully changed project path to: D:/GameSim/UnityProjects/MissleCommandDemo
+D:/GameSim/UnityProjects/MissleCommandDemo
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 116.66 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.7f1 (d91830b65d9b)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2021.1.7f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/GameSim/UnityProjects/MissleCommandDemo/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R7 450 (ID=0x682b)
+    Vendor:   ATI
+    VRAM:     4076 MB
+    Driver:   24.20.11020.3002
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2021.1.7f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2021.1.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity 2021.1.7f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56052
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2021.1.7f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity 2021.1.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001966 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 107.61 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.328 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.002426 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 110.68 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.134 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4648 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 195.7 MB.
+System memory in use after: 195.8 MB.
+
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 5124.
+Total: 2.664800 ms (FindLiveObjects: 0.318900 ms CreateObjectMapping: 0.232300 ms MarkObjects: 1.990500 ms  DeleteObjects: 0.122400 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scripts/PlayerMissleManager.cs
+  artifactKey: Guid(942f96c9804156444ab6bfd1fcaf6b87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerMissleManager.cs using Guid(942f96c9804156444ab6bfd1fcaf6b87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd089a16f7e66f453f199b6337cac903d') in 0.043302 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Scripts/PlayerMissleScript.cs
+  artifactKey: Guid(99a87128dc25c274f829ec5b3f40b5e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/PlayerMissleScript.cs using Guid(99a87128dc25c274f829ec5b3f40b5e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca6b8bc938be45584f1a396f4748763b') in 0.018954 seconds 
+========================================================================
+Received Prepare
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 2.38 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 96.8 MB.
+System memory in use after: 96.9 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 5124.
+Total: 2.544300 ms (FindLiveObjects: 0.319600 ms CreateObjectMapping: 0.228200 ms MarkObjects: 1.905500 ms  DeleteObjects: 0.090300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002495 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.071 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.93 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4513 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 186.0 MB.
+System memory in use after: 186.2 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 5128.
+Total: 3.124500 ms (FindLiveObjects: 0.338700 ms CreateObjectMapping: 0.281100 ms MarkObjects: 2.400500 ms  DeleteObjects: 0.103100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 78.704450 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1374e92626bba9bb4381e17c5d9bd748') in 0.503403 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.548417 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31713bd46d8b38e84bb92804ecc78be3') in 0.039073 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.275095 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f6bb5409af30f9aa527528285a245971') in 0.037039 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.425061 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f8320fd8ae9c076a07220d788638976') in 0.034876 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.221127 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7ebc3857ffbf2e645bab7e738c4c79c') in 0.042638 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002467 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.037 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4513 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 192.5 MB.
+System memory in use after: 192.6 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 5177.
+Total: 2.673800 ms (FindLiveObjects: 0.318600 ms CreateObjectMapping: 0.227900 ms MarkObjects: 2.022100 ms  DeleteObjects: 0.104400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 193.403713 seconds.
+  path: Assets/Prefabs/PlayerMissle.prefab
+  artifactKey: Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/PlayerMissle.prefab using Guid(20f7ae73228453e4ba15ac8038749ad5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'deff66eec051e755ee7803ac39d45724') in 0.169511 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002433 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\GameSim\UnityProjects\MissleCommandDemo\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.80 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.005 seconds
+Platform modules already initialized, skipping
+Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
+Refreshing native plugins compatible for Editor in 0.75 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 4513 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 192.6 MB.
+System memory in use after: 192.8 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 5217.
+Total: 2.817200 ms (FindLiveObjects: 0.322100 ms CreateObjectMapping: 0.231300 ms MarkObjects: 2.155700 ms  DeleteObjects: 0.107200 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
