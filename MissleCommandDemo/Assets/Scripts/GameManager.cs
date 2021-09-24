@@ -5,11 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
+    [SerializeField] Canvas mainGameCanvas;
+
+    private void Start()
+    {
+        DontDestroyOnLoad(mainGameCanvas);
+    }
+
     void Update()
     {
         QuitGame();
-        RestartGame();
+        RestartGame();    
+    }
+
+    public void GameOver()
+    {
+
     }
 
     private void QuitGame()
