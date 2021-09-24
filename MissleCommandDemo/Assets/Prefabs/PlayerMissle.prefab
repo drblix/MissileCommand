@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1502609063659697987}
   - component: {fileID: 6889019502312414427}
   - component: {fileID: 4485255103854257205}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerMissle
-  m_TagString: Untagged
+  m_TagString: PlayerMissle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _missleTrail: {fileID: 7478129386316683384}
+  _playerMissleExplosion: {fileID: 3460381305361870303, guid: 9159b5255cae5ac44ac807f734d1be3e, type: 3}
   _playerCamera: {fileID: 4864894462103422147, guid: 05fb1f848664c4645b9335d79ac096b9, type: 3}
   _explosionClips:
   - {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
@@ -164,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 112262943536762252}
   - component: {fileID: 5844429760298082228}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

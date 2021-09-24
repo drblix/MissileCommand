@@ -60,7 +60,7 @@ public class PlayerCursor : MonoBehaviour
         {
             transform.Translate(0f, -0.1f, 0f);
         }
-        else if (transform.position.y <= -2)
+        else if (transform.position.y <= -2.92)
         {
             transform.Translate(0f, 0.1f, 0f);
         }

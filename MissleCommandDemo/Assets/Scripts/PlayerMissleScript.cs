@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMissleScript : MonoBehaviour
 {
     [SerializeField] GameObject _missleTrail;
+    [SerializeField] GameObject _playerMissleExplosion;
     [SerializeField] GameObject _playerCamera;
 
     [SerializeField] AudioClip[] _explosionClips;
@@ -28,7 +29,7 @@ public class PlayerMissleScript : MonoBehaviour
         {
             int clipNum = Random.Range(0, _explosionClips.Length);
             AudioSource.PlayClipAtPoint(_explosionClips[clipNum], _playerCamera.transform.position);
-            print("Target reached!");
+            AfterMissleDeath();
             Destroy(this.gameObject);
         }
     }
@@ -47,8 +48,9 @@ public class PlayerMissleScript : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    private void AfterMissleDeath()
     {
+        Instantiate(_playerMissleExplosion, transform.position, Quaternion.identity);
         _missleTrail.transform.parent = null;
         _missleTrail.GetComponent<TrailRenderer>().autodestruct = true;
     }

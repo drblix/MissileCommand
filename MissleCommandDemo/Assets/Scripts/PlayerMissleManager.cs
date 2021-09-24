@@ -26,8 +26,7 @@ public class PlayerMissleManager : MonoBehaviour
     private IEnumerator FireMissle(Vector2 targetPos)
     {
         _weaponUsable = false;
-        print(targetPos);
-
+        
         _missleClone = Instantiate(_playerMissle, _missleSpawningArea.transform.position, Quaternion.identity);
         _missleClone.GetComponent<PlayerMissleScript>().targetPosition = targetPos;
         _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
