@@ -106,7 +106,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
   - {fileID: 8300000, guid: 4aa5da1bff0556d4bbef0c9139cda517, type: 3}
   - {fileID: 8300000, guid: 87cd307db20d2aa4fab8a6d686802636, type: 3}
-  missleSpeed: 0
+  missleSpeed: 0.1
   targetPosition: {x: 0, y: 0}
 --- !u!50 &6889019502312414427
 Rigidbody2D:

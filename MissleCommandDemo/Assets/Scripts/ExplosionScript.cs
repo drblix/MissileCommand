@@ -18,6 +18,7 @@ public class ExplosionScript : MonoBehaviour
         {
             int randomNum = Random.Range(0, _explosionEffects.Length);
             AudioSource.PlayClipAtPoint(_explosionEffects[randomNum], _playerCamera.transform.position);
+            FindObjectOfType<GameManager>().AddToScore(100);
             if (collision.GetComponent<EnemyMissleScript>())
             {
                 collision.GetComponent<EnemyMissleScript>().DestroyMissle(false);

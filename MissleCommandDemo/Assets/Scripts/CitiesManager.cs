@@ -18,6 +18,7 @@ public class CitiesManager : MonoBehaviour
         if (!city01Alive && !city02Alive && !city03Alive && !city04Alive)
         {
             print("game over");
+            FindObjectOfType<GameManager>().gameOver = true;
         }
     }
 

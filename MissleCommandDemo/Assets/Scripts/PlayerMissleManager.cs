@@ -17,7 +17,7 @@ public class PlayerMissleManager : MonoBehaviour
 
     public void KeyTriggered(Vector2 targetPos)
     {
-        if (_weaponUsable)
+        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>())
         {
             StartCoroutine(FireMissle(targetPos));
         }

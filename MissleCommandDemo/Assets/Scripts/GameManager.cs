@@ -2,25 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Canvas mainGameCanvas;
+    // UI stuff
+    [SerializeField] Canvas _mainGameCanvas;
+    [SerializeField] Text _gameOverText;
+    [SerializeField] Text _scoreText;
+
+    [SerializeField] GameObject _playerObject;
+    [SerializeField] AudioClip _explosionSFX;
+    [SerializeField] GameObject _enemyMissileManager;
+    [SerializeField] GameObject _playerMissileManager;
+    [SerializeField] GameObject _playerMissileExplosion;
+
+    private int _scoreTotal = 0;
+    public bool gameOver = false;
 
     private void Start()
     {
-        DontDestroyOnLoad(mainGameCanvas);
+        DontDestroyOnLoad(_mainGameCanvas);
     }
 
-    void Update()
+    private void Update()
     {
         QuitGame();
-        RestartGame();    
+        RestartGame();
+        if (gameOver)
+        {
+            GameOver();
+        }
     }
 
-    public void GameOver()
+    private void GameOver()
     {
+        // Y pos 0.4
+        _gameOverText.gameObject.SetActive(true);
+        _gameOverText.gameObject.GetComponent<RectTransform>().position = Vector2.MoveTowards(_gameOverText.transform.position, new Vector2(0f, 0.4f), 2f * Time.deltaTime);
 
+        if (_playerMissileManager || _enemyMissileManager || _playerObject)
+        {
+            Destroy(_playerMissileManager);
+            Destroy(_enemyMissileManager);
+            Instantiate(_playerMissileExplosion, _playerObject.transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(_explosionSFX, new Vector3(0f, 0.19f, -7.1f));
+            Destroy(_playerObject);
+        }
+    }
+
+    public void AddToScore(int scoreAmount)
+    {
+        _scoreTotal += scoreAmount;
+        _scoreText.text = System.Convert.ToString(_scoreTotal);
     }
 
     private void QuitGame()
