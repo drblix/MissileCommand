@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         // Y pos 0.4
         _gameOverText.gameObject.SetActive(true);
-        _gameOverText.gameObject.GetComponent<RectTransform>().position = Vector2.MoveTowards(_gameOverText.transform.position, new Vector2(0f, 0.4f), 2f * Time.deltaTime);
+        _gameOverText.gameObject.GetComponent<RectTransform>().position = Vector2.MoveTowards(_gameOverText.transform.position, new Vector2(0f, 1.25f), 4f * Time.deltaTime);
 
         if (_playerMissileManager || _enemyMissileManager || _playerObject)
         {
