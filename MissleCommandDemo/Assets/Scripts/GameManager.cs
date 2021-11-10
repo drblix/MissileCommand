@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Canvas _mainGameCanvas;
     [SerializeField] Text _gameOverText;
     [SerializeField] Text _scoreText;
+
+    [SerializeField] private GameObject _ufoEnemy;
 
     [SerializeField] GameObject _playerObject;
     [SerializeField] AudioClip _explosionSFX;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(_mainGameCanvas);
+        StartCoroutine(SpawnUFO());
     }
 
     private void Update()
@@ -48,6 +50,14 @@ public class GameManager : MonoBehaviour
             Instantiate(_playerMissileExplosion, _playerObject.transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(_explosionSFX, new Vector3(0f, 0.19f, -7.1f));
             Destroy(_playerObject);
+
+            foreach (GameObject missile in FindObjectsOfType<GameObject>())
+            {
+                if (missile.name == "PlayerMissle(Clone)" || missile.name == "EnemyMissle(Clone)")
+                {
+                    Destroy(missile);
+                }
+            }
         }
     }
 
@@ -72,6 +82,21 @@ public class GameManager : MonoBehaviour
         {
             print("restart called");
             SceneManager.LoadScene(0);
+        }
+    }
+
+    private IEnumerator SpawnUFO()
+    {
+        while (!gameOver)
+        {
+            float num = Mathf.RoundToInt(Random.Range(1f, 2f)); // generates random number
+
+            yield return new WaitForSeconds(Mathf.RoundToInt(Random.Range(20f, 30f))); // waits between 20 or 30 seconds (random)
+
+            if (num == 2) // instantiates ufo if num == 2
+            {
+                Instantiate(_ufoEnemy, Vector2.zero, Quaternion.identity);
+            }
         }
     }
 }

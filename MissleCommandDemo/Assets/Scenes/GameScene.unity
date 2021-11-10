@@ -155,6 +155,7 @@ MonoBehaviour:
   _mainGameCanvas: {fileID: 375898738}
   _gameOverText: {fileID: 1867216722}
   _scoreText: {fileID: 1039818409}
+  _ufoEnemy: {fileID: 8560632100640482102, guid: 5a9651b2eb9ea914a981bc4d019cb3b2, type: 3}
   _playerObject: {fileID: 1683474764}
   _explosionSFX: {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
   _enemyMissileManager: {fileID: 1989803639}
