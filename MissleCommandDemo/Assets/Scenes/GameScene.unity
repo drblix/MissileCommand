@@ -2361,6 +2361,10 @@ PrefabInstance:
       propertyPath: m_RenderingLayerMask
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4864894462103422144, guid: 05fb1f848664c4645b9335d79ac096b9, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4864894462103422147, guid: 05fb1f848664c4645b9335d79ac096b9, type: 3}
       propertyPath: m_Name
       value: Camera
