@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class PlayerMissleManager : MonoBehaviour
 {
-    [SerializeField] GameObject _playerMissle;
-    [SerializeField] GameObject _missleSpawningArea;
-    [SerializeField] AudioClip _launchSFX;
-    [SerializeField] GameObject _playerCamera;
+    [SerializeField] private GameObject _playerMissle;
+    [SerializeField] private GameObject _missleSpawningArea;
+    [SerializeField] private AudioClip _launchSFX;
+    [SerializeField] private GameObject _playerCamera;
+    [SerializeField] private SpriteRenderer _plrAmmoDisplay;
+
+    [SerializeField] private Sprite[] _ammoSprites;
+    
+    private int _currentAmmo = 12;
+
 
     [SerializeField] private float _missleSpeed;
 
@@ -15,18 +21,25 @@ public class PlayerMissleManager : MonoBehaviour
 
     GameObject _missleClone;
 
+    private void Start()
+    {
+        _plrAmmoDisplay.sprite = _ammoSprites[11];
+        _currentAmmo = 12;
+    }
+
     public void KeyTriggered(Vector2 targetPos)
     {
-        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>())
+        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>() && _currentAmmo > 0)
         {
+            _weaponUsable = false;
+            _currentAmmo--;
+            _plrAmmoDisplay.sprite = _ammoSprites[_currentAmmo - 1];
             StartCoroutine(FireMissle(targetPos));
         }
     }
 
     private IEnumerator FireMissle(Vector2 targetPos)
-    {
-        _weaponUsable = false;
-        
+    {   
         _missleClone = Instantiate(_playerMissle, _missleSpawningArea.transform.position, Quaternion.identity);
         _missleClone.GetComponent<PlayerMissleScript>().targetPosition = targetPos;
         _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
