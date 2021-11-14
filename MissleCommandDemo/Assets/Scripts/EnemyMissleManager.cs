@@ -10,8 +10,6 @@ public class EnemyMissleManager : MonoBehaviour
     [SerializeField] [Tooltip("Max X coordinate value for spawning")] private float _maxXRange;
     [SerializeField] [Tooltip("Min X coordinate value for spawning")] private float _minXRange;
 
-    private float _xCoordinateSpawn;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +20,7 @@ public class EnemyMissleManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(Random.Range(2.5f, 5f));
 
             Instantiate(_enemyMissle, new Vector2(Random.Range(_minXRange, _maxXRange), _yCoordinateSpawn), Quaternion.identity);
         }
