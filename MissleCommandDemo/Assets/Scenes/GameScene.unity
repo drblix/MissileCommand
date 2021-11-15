@@ -1629,6 +1629,7 @@ MonoBehaviour:
   - {fileID: -2163925625391961677, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   - {fileID: -2934655699864470275, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   - {fileID: 1264459107217343097, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  _lowAmmo: {fileID: 8300000, guid: 98d9ec845b980124581cc3234580ebc2, type: 3}
   _missleSpeed: 3
 --- !u!4 &1459422055
 Transform:

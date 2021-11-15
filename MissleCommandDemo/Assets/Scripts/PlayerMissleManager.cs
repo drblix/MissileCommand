@@ -11,9 +11,11 @@ public class PlayerMissleManager : MonoBehaviour
     [SerializeField] private SpriteRenderer _plrAmmoDisplay;
 
     [SerializeField] private Sprite[] _ammoSprites;
+
+    [SerializeField]
+    private AudioClip _lowAmmo;
     
     private int _currentAmmo = 12;
-
 
     [SerializeField] private float _missleSpeed;
 
@@ -33,7 +35,16 @@ public class PlayerMissleManager : MonoBehaviour
         {
             _weaponUsable = false;
             _currentAmmo--;
-            _plrAmmoDisplay.sprite = _ammoSprites[_currentAmmo - 1];
+
+            if (_currentAmmo != 0)
+            {
+                _plrAmmoDisplay.sprite = _ammoSprites[_currentAmmo - 1];
+            }
+            else
+            {
+                _plrAmmoDisplay.sprite = null;
+            }
+
             StartCoroutine(FireMissle(targetPos));
         }
     }
@@ -44,6 +55,11 @@ public class PlayerMissleManager : MonoBehaviour
         _missleClone.GetComponent<PlayerMissleScript>().targetPosition = targetPos;
         _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
         AudioSource.PlayClipAtPoint(_launchSFX, _playerCamera.transform.position);
+
+        if (_currentAmmo <= 2)
+        {
+            AudioSource.PlayClipAtPoint(_lowAmmo, _playerCamera.transform.position);
+        }
 
         yield return new WaitForSeconds(2f);
         _weaponUsable = true;
