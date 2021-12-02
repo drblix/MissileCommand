@@ -5,10 +5,12 @@ using UnityEngine;
 public class ExplosionScript : MonoBehaviour
 {
     [SerializeField] AudioClip[] _explosionEffects;
-    [SerializeField] GameObject _playerCamera;
+
+    private GameObject _playerCamera;
 
     private void Start()
     {
+        _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
     }
     

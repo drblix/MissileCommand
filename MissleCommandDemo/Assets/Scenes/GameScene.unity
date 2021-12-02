@@ -156,7 +156,6 @@ MonoBehaviour:
   _gameOverText: {fileID: 1867216722}
   _scoreText: {fileID: 1039818409}
   _ufoEnemy: {fileID: 8560632100640482102, guid: 5a9651b2eb9ea914a981bc4d019cb3b2, type: 3}
-  _playerObject: {fileID: 1683474764}
   _explosionSFX: {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
   _enemyMissileManager: {fileID: 1989803639}
   _playerMissileManager: {fileID: 1459422053}
@@ -1437,7 +1436,6 @@ MonoBehaviour:
   _playerMissle: {fileID: 1502609063659697991, guid: 20f7ae73228453e4ba15ac8038749ad5, type: 3}
   _missleSpawningArea: {fileID: 789999495}
   _launchSFX: {fileID: 8300000, guid: 2912400d9ea40164b877c44365bbd765, type: 3}
-  _playerCamera: {fileID: 0}
   _plrAmmoDisplay: {fileID: 699902560}
   _ammoSprites:
   - {fileID: -660875926510651519, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}

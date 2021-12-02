@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject _ufoEnemy;
 
-    [SerializeField] GameObject _playerObject;
+    private GameObject _playerObject;
     [SerializeField] AudioClip _explosionSFX;
     [SerializeField] GameObject _enemyMissileManager;
     [SerializeField] GameObject _playerMissileManager;
@@ -23,23 +23,19 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(_mainGameCanvas);
+        _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         StartCoroutine(SpawnUFO());
     }
 
     private void Update()
     {
         QuitGame();
-        RestartGame();
-        if (gameOver)
-        {
-            GameOver();
-        }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
-        // Y pos 0.4
+        gameOver = true;
+
         _gameOverText.gameObject.SetActive(true);
         _gameOverText.gameObject.GetComponent<RectTransform>().position = Vector2.MoveTowards(_gameOverText.transform.position, new Vector2(0f, 1.25f), 4f * Time.deltaTime);
 
@@ -49,16 +45,17 @@ public class GameManager : MonoBehaviour
             Destroy(_enemyMissileManager);
             Instantiate(_playerMissileExplosion, _playerObject.transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(_explosionSFX, new Vector3(0f, 0.19f, -7.1f));
-            Destroy(_playerObject);
 
             foreach (GameObject missile in FindObjectsOfType<GameObject>())
             {
-                if (missile.name == "PlayerMissle(Clone)" || missile.name == "EnemyMissle(Clone)")
+                if (missile.name == "PlayerMissle(Clone)" || missile.name == "EnemyMissle(Clone)" || missile.name == "UFO(Clone)")
                 {
                     Destroy(missile);
                 }
             }
         }
+
+        StartCoroutine(ReturnToMain());
     }
 
     public void AddToScore(int scoreAmount)
@@ -76,27 +73,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void RestartGame()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            print("restart called");
-            SceneManager.LoadScene(0);
-        }
-    }
-
     private IEnumerator SpawnUFO()
     {
         while (!gameOver)
         {
-            float num = Mathf.RoundToInt(Random.Range(1f, 2f)); // generates random number
+            int num = Mathf.RoundToInt(Random.Range(1f, 2f)); // generates random number
 
-            yield return new WaitForSeconds(Mathf.RoundToInt(Random.Range(20f, 30f))); // waits between 20 or 30 seconds (random)
+            yield return new WaitForSeconds(Mathf.RoundToInt(Random.Range(12f, 25f))); // waits between 20 or 30 seconds (random)
+
+            if (gameOver)
+            {
+                break;
+            }
 
             if (num == 2) // instantiates ufo if num == 2
             {
                 Instantiate(_ufoEnemy, Vector2.zero, Quaternion.identity);
             }
         }
+    }
+
+    private IEnumerator ReturnToMain()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 }

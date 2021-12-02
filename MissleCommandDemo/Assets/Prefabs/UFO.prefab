@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyMissile: {fileID: 4902149189112078892, guid: 5165b65581329164d84f07f00986cd0e, type: 3}
+  _idleSFXContainer: {fileID: 7641298003436531482, guid: 5638b58f7433e354bbab6ca43615ce05, type: 3}
   _ufoExplosion: {fileID: 189053734334259268, guid: db46d58134b43e54980083257f6d57cc, type: 3}
   _ufoSpeed: 2
   _startingPos: {x: -11, y: 3}

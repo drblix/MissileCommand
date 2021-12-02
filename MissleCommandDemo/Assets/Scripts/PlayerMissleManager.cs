@@ -7,8 +7,10 @@ public class PlayerMissleManager : MonoBehaviour
     [SerializeField] private GameObject _playerMissle;
     [SerializeField] private GameObject _missleSpawningArea;
     [SerializeField] private AudioClip _launchSFX;
-    [SerializeField] private GameObject _playerCamera;
     [SerializeField] private SpriteRenderer _plrAmmoDisplay;
+
+    private GameObject _playerCamera;
+    
 
     [SerializeField] private Sprite[] _ammoSprites;
 
@@ -25,17 +27,19 @@ public class PlayerMissleManager : MonoBehaviour
 
     private void Start()
     {
+        _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         _plrAmmoDisplay.sprite = _ammoSprites[11];
         _currentAmmo = 12;
     }
 
     public void KeyTriggered(Vector2 targetPos)
     {
-        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>() && _currentAmmo > 0)
+        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>()) // && _currentAmmo > 0)
         {
             _weaponUsable = false;
-            _currentAmmo--;
+            // _currentAmmo--;
 
+            /*
             if (_currentAmmo != 0)
             {
                 _plrAmmoDisplay.sprite = _ammoSprites[_currentAmmo - 1];
@@ -44,6 +48,7 @@ public class PlayerMissleManager : MonoBehaviour
             {
                 _plrAmmoDisplay.sprite = null;
             }
+             */
 
             StartCoroutine(FireMissle(targetPos));
         }
@@ -56,10 +61,12 @@ public class PlayerMissleManager : MonoBehaviour
         _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
         AudioSource.PlayClipAtPoint(_launchSFX, _playerCamera.transform.position);
 
+        /*
         if (_currentAmmo <= 2)
         {
             AudioSource.PlayClipAtPoint(_lowAmmo, _playerCamera.transform.position);
         }
+        */
 
         yield return new WaitForSeconds(2f);
         _weaponUsable = true;

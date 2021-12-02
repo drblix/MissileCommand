@@ -7,6 +7,8 @@ public class UFOScript : MonoBehaviour
     [SerializeField]
     private GameObject _enemyMissile;
     [SerializeField]
+    private GameObject _idleSFXContainer;
+    [SerializeField]
     private GameObject _ufoExplosion;
     [SerializeField]
     private float _ufoSpeed;
@@ -19,12 +21,19 @@ public class UFOScript : MonoBehaviour
     private Vector2 _endingPos;
     private Vector2 _currentTrans;
 
+    private GameObject _playerCamera;
+    private GameObject _newContainer;
+
     private float _waitTime;
 
     private void Awake()
     {
+        _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         _missileSpawn = this.transform.Find("MissileSpawn").gameObject;
         transform.position = _startingPos;
+
+        _newContainer = Instantiate(_idleSFXContainer, _playerCamera.transform.position, Quaternion.identity);
+
         StartCoroutine(SpawnMissle());
     }
 
@@ -36,6 +45,7 @@ public class UFOScript : MonoBehaviour
 
         if (_currentTrans == _endingPos)
         {
+            Destroy(_newContainer);
             Destroy(this.gameObject);
         }
     }
@@ -57,6 +67,7 @@ public class UFOScript : MonoBehaviour
         {
             GameObject _newExplosion = Instantiate(_ufoExplosion, transform.position, Quaternion.identity);
             _newExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
+            Destroy(_newContainer);
             Destroy(this.gameObject);
         }
     }

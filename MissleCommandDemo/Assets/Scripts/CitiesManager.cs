@@ -12,13 +12,15 @@ public class CitiesManager : MonoBehaviour
     private bool city03Alive = true;
     private bool city04Alive = true;
 
+    private bool _gameOverCalled = false;
     
     void Update()
     {
-        if (!city01Alive && !city02Alive && !city03Alive && !city04Alive)
+        if (!city01Alive && !city02Alive && !city03Alive && !city04Alive && !_gameOverCalled)
         {
+            _gameOverCalled = true;
             print("game over");
-            FindObjectOfType<GameManager>().gameOver = true;
+            FindObjectOfType<GameManager>().GameOver();
         }
     }
 

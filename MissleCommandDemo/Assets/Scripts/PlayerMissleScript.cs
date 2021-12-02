@@ -5,7 +5,7 @@ public class PlayerMissleScript : MonoBehaviour
 {
     [SerializeField] GameObject _missleTrail;
     [SerializeField] GameObject _playerMissleExplosion;
-    [SerializeField] GameObject _playerCamera;
+    private GameObject _playerCamera;
 
     [SerializeField] AudioClip[] _explosionClips;
 
@@ -16,6 +16,7 @@ public class PlayerMissleScript : MonoBehaviour
 
     private void Start()
     {
+        _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         transform.position = new Vector2(-0.29f, -3.41f);
         _playerRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(ChangeColor());

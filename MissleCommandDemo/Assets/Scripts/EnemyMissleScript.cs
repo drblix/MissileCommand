@@ -6,10 +6,10 @@ public class EnemyMissleScript : MonoBehaviour
 {
     [SerializeField] GameObject _enemyExplosion;
     [SerializeField] AudioClip[] _explosionSFX;
-    [SerializeField] GameObject _playerCamera;
+    private GameObject _playerCamera;
 
     SpriteRenderer _playerRenderer;
-    public float _missleSpeed;
+    public float _missileSpeed;
 
     private readonly Vector2[] _friendlyCityLocations = new Vector2[]
     {
@@ -28,9 +28,11 @@ public class EnemyMissleScript : MonoBehaviour
         randomCityNum = Random.Range(0, _friendlyCityLocations.Length);
         _cityTargetVector = _friendlyCityLocations[randomCityNum];
         _playerRenderer = GetComponent<SpriteRenderer>();
-        if (_missleSpeed <= 0f)
+        _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
+
+        if (_missileSpeed <= 0f)
         {
-            _missleSpeed = 1f;
+            _missileSpeed = 1f;
         }
         StartCoroutine(ChangeColor());
     }
@@ -38,7 +40,7 @@ public class EnemyMissleScript : MonoBehaviour
     
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, _missleSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, _missileSpeed * Time.deltaTime);
     }
 
     public void DestroyMissle(bool cityHit)
