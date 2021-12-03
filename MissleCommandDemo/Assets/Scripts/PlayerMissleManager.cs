@@ -8,6 +8,7 @@ public class PlayerMissleManager : MonoBehaviour
     [SerializeField] private GameObject _missleSpawningArea;
     [SerializeField] private AudioClip _launchSFX;
     [SerializeField] private SpriteRenderer _plrAmmoDisplay;
+    [SerializeField] private GameObject _lowAmmoNotification;
 
     private GameObject _playerCamera;
     
@@ -34,12 +35,12 @@ public class PlayerMissleManager : MonoBehaviour
 
     public void KeyTriggered(Vector2 targetPos)
     {
-        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>()) // && _currentAmmo > 0)
+        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>() && _currentAmmo > 0)
         {
             _weaponUsable = false;
-            // _currentAmmo--;
+            _currentAmmo--;
 
-            /*
+            
             if (_currentAmmo != 0)
             {
                 _plrAmmoDisplay.sprite = _ammoSprites[_currentAmmo - 1];
@@ -48,7 +49,7 @@ public class PlayerMissleManager : MonoBehaviour
             {
                 _plrAmmoDisplay.sprite = null;
             }
-             */
+            
 
             StartCoroutine(FireMissle(targetPos));
         }
@@ -61,14 +62,25 @@ public class PlayerMissleManager : MonoBehaviour
         _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
         AudioSource.PlayClipAtPoint(_launchSFX, _playerCamera.transform.position);
 
-        /*
+        
         if (_currentAmmo <= 2)
         {
+            _lowAmmoNotification.SetActive(true);
             AudioSource.PlayClipAtPoint(_lowAmmo, _playerCamera.transform.position);
         }
-        */
+        
 
         yield return new WaitForSeconds(2f);
+        _lowAmmoNotification.SetActive(false);
         _weaponUsable = true;
+    }
+
+
+
+    public void Reset()
+    {
+        _currentAmmo = 12;
+        _plrAmmoDisplay.sprite = _ammoSprites[11];
+        _lowAmmoNotification.SetActive(false);
     }
 }

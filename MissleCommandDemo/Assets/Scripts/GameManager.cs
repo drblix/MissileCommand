@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _playerMissileExplosion;
 
     private int _scoreTotal = 0;
+    public int currentLevel = 1;
+
     public bool gameOver = false;
 
     private void Start()
@@ -52,6 +54,12 @@ public class GameManager : MonoBehaviour
                 {
                     Destroy(missile);
                 }
+            }
+
+            if (GameObject.Find("IdleSFXContainer(Clone)"))
+            {
+                GameObject _container = GameObject.Find("IdleSFXContainer(Clone)");
+                Destroy(_container);
             }
         }
 
@@ -98,4 +106,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
     }
+
+    /*
+    private IEnumerator LoadNextLevel()
+    {
+
+    }
+    */
 }

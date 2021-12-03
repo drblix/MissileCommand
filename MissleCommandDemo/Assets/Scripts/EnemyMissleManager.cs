@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyMissleManager : MonoBehaviour
 {
-    [SerializeField] GameObject _enemyMissle;
+    [SerializeField] private GameObject _enemyMissile;
+
+    public int missilesToSpawn = 8;
 
     [SerializeField] [Tooltip("Y coordinate that missles spawn at")] private float _yCoordinateSpawn;
     [SerializeField] [Tooltip("Max X coordinate value for spawning")] private float _maxXRange;
@@ -13,16 +15,16 @@ public class EnemyMissleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnEnemyMissles());
+        StartCoroutine(SpawnEnemyMissiles());
     }
 
-    private IEnumerator SpawnEnemyMissles()
+    private IEnumerator SpawnEnemyMissiles()
     {
-        while (true)
+        for (int i = 0; i < missilesToSpawn; i++)
         {
             yield return new WaitForSeconds(Random.Range(2.5f, 5f));
 
-            Instantiate(_enemyMissle, new Vector2(Random.Range(_minXRange, _maxXRange), _yCoordinateSpawn), Quaternion.identity);
+            Instantiate(_enemyMissile, new Vector2(Random.Range(_minXRange, _maxXRange), _yCoordinateSpawn), Quaternion.identity);
         }
     }
 }

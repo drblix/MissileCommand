@@ -160,6 +160,7 @@ MonoBehaviour:
   _enemyMissileManager: {fileID: 1989803639}
   _playerMissileManager: {fileID: 1459422053}
   _playerMissileExplosion: {fileID: 3460381305361870303, guid: 9159b5255cae5ac44ac807f734d1be3e, type: 3}
+  currentLevel: 1
   gameOver: 0
 --- !u!4 &66634345
 Transform:
@@ -434,6 +435,7 @@ RectTransform:
   m_Children:
   - {fileID: 1867216721}
   - {fileID: 1039818408}
+  - {fileID: 2100129926}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1437,6 +1439,7 @@ MonoBehaviour:
   _missleSpawningArea: {fileID: 789999495}
   _launchSFX: {fileID: 8300000, guid: 2912400d9ea40164b877c44365bbd765, type: 3}
   _plrAmmoDisplay: {fileID: 699902560}
+  _lowAmmoNotification: {fileID: 2100129925}
   _ammoSprites:
   - {fileID: -660875926510651519, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   - {fileID: 8983880942314921799, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
@@ -1451,7 +1454,7 @@ MonoBehaviour:
   - {fileID: -2934655699864470275, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   - {fileID: 1264459107217343097, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   _lowAmmo: {fileID: 8300000, guid: 98d9ec845b980124581cc3234580ebc2, type: 3}
-  _missleSpeed: 3
+  _missleSpeed: 4
 --- !u!4 &1459422055
 Transform:
   m_ObjectHideFlags: 0
@@ -2252,7 +2255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3117c8dbc9768d4bb22953d88e6d1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMissle: {fileID: 4902149189112078892, guid: 5165b65581329164d84f07f00986cd0e, type: 3}
+  _enemyMissile: {fileID: 0}
+  missilesToSpawn: 8
   _yCoordinateSpawn: 5.6
   _maxXRange: 7.58
   _minXRange: -8.62
@@ -2270,6 +2274,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2100129925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2100129926}
+  - component: {fileID: 2100129928}
+  - component: {fileID: 2100129927}
+  m_Layer: 5
+  m_Name: LowAmmo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2100129926
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100129925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 375898739}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.19, y: -4.91}
+  m_SizeDelta: {x: 8.692, y: 2.135}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2100129927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100129925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: e2dc93c9cf649c644b476ec9471eee5b, type: 3}
+  m_Color: {r: 1, g: 0.020871071, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e2dc93c9cf649c644b476ec9471eee5b, type: 3}
+    m_FontSize: 1
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 103
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: LOW AMMO
+--- !u!222 &2100129928
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100129925}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1764002192592803735
 PrefabInstance:
   m_ObjectHideFlags: 0
