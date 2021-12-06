@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 1459422055}
   - component: {fileID: 1459422054}
   m_Layer: 0
-  m_Name: PlayerMissleManager
+  m_Name: PlayerMissileManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,11 +1432,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1459422053}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942f96c9804156444ab6bfd1fcaf6b87, type: 3}
+  m_Script: {fileID: 11500000, guid: 36d1c42b309f9d14c9ba3a4b5c64f54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMissle: {fileID: 1502609063659697991, guid: 20f7ae73228453e4ba15ac8038749ad5, type: 3}
-  _missleSpawningArea: {fileID: 789999495}
+  _playerMissile: {fileID: 1502609063659697991, guid: 20f7ae73228453e4ba15ac8038749ad5, type: 3}
+  _missileSpawningArea: {fileID: 789999495}
   _launchSFX: {fileID: 8300000, guid: 2912400d9ea40164b877c44365bbd765, type: 3}
   _plrAmmoDisplay: {fileID: 699902560}
   _lowAmmoNotification: {fileID: 2100129925}
@@ -1455,6 +1455,7 @@ MonoBehaviour:
   - {fileID: 1264459107217343097, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
   _lowAmmo: {fileID: 8300000, guid: 98d9ec845b980124581cc3234580ebc2, type: 3}
   _missleSpeed: 4
+  _reloadTime: 1
 --- !u!4 &1459422055
 Transform:
   m_ObjectHideFlags: 0
@@ -2015,7 +2016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1867216721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2032,7 +2033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 12.3}
+  m_AnchoredPosition: {x: 0, y: 1.3}
   m_SizeDelta: {x: 253.8978, y: 61.6095}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867216722
@@ -2237,7 +2238,7 @@ GameObject:
   - component: {fileID: 1989803641}
   - component: {fileID: 1989803640}
   m_Layer: 0
-  m_Name: EnemyMissleManager
+  m_Name: EnemyMissileManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2255,7 +2256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3117c8dbc9768d4bb22953d88e6d1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyMissile: {fileID: 0}
+  _enemyMissile: {fileID: 4902149189112078892, guid: 5165b65581329164d84f07f00986cd0e, type: 3}
+  _splitterMissile: {fileID: 4902149189112078892, guid: d45d1257532605a479f181c3e88892ca, type: 3}
   missilesToSpawn: 8
   _yCoordinateSpawn: 5.6
   _maxXRange: 7.58
@@ -2406,6 +2408,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992494212823503717, guid: f5c0c041cff50f748b198e769605b5fe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161028767354744127, guid: f5c0c041cff50f748b198e769605b5fe, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161028767354744127, guid: f5c0c041cff50f748b198e769605b5fe, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161028767354744127, guid: f5c0c041cff50f748b198e769605b5fe, type: 3}
+      propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

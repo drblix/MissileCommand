@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6889019502312414427}
   - component: {fileID: 4485255103854257205}
   m_Layer: 11
-  m_Name: PlayerMissle
+  m_Name: PlayerMissile
   m_TagString: PlayerMissle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a87128dc25c274f829ec5b3f40b5e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missleTrail: {fileID: 7478129386316683384}
-  _playerMissleExplosion: {fileID: 3460381305361870303, guid: 9159b5255cae5ac44ac807f734d1be3e, type: 3}
-  _playerCamera: {fileID: 4864894462103422147, guid: 05fb1f848664c4645b9335d79ac096b9, type: 3}
+  _missileTrail: {fileID: 7478129386316683384}
+  _playerMissileExplosion: {fileID: 3460381305361870303, guid: 9159b5255cae5ac44ac807f734d1be3e, type: 3}
   _explosionClips:
   - {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
   - {fileID: 8300000, guid: 4aa5da1bff0556d4bbef0c9139cda517, type: 3}

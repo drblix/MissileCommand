@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMissleManager : MonoBehaviour
+public class PlayerMissileManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _playerMissle;
-    [SerializeField] private GameObject _missleSpawningArea;
+    [SerializeField] private GameObject _playerMissile;
+    [SerializeField] private GameObject _missileSpawningArea;
     [SerializeField] private AudioClip _launchSFX;
     [SerializeField] private SpriteRenderer _plrAmmoDisplay;
     [SerializeField] private GameObject _lowAmmoNotification;
 
     private GameObject _playerCamera;
-    
 
     [SerializeField] private Sprite[] _ammoSprites;
 
@@ -20,11 +19,14 @@ public class PlayerMissleManager : MonoBehaviour
     
     private int _currentAmmo = 12;
 
-    [SerializeField] private float _missleSpeed;
+    [SerializeField] 
+    private float _missleSpeed;
+    [SerializeField]
+    private float _reloadTime;
 
     private bool _weaponUsable = true;
 
-    GameObject _missleClone;
+    private GameObject _missileClone;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class PlayerMissleManager : MonoBehaviour
 
     public void KeyTriggered(Vector2 targetPos)
     {
-        if (_weaponUsable && FindObjectOfType<PlayerMissleManager>() && _currentAmmo > 0)
+        if (_weaponUsable && FindObjectOfType<PlayerMissileManager>() && _currentAmmo > 0)
         {
             _weaponUsable = false;
             _currentAmmo--;
@@ -57,9 +59,9 @@ public class PlayerMissleManager : MonoBehaviour
 
     private IEnumerator FireMissle(Vector2 targetPos)
     {   
-        _missleClone = Instantiate(_playerMissle, _missleSpawningArea.transform.position, Quaternion.identity);
-        _missleClone.GetComponent<PlayerMissleScript>().targetPosition = targetPos;
-        _missleClone.GetComponent<PlayerMissleScript>().missleSpeed = _missleSpeed;
+        _missileClone = Instantiate(_playerMissile, _missileSpawningArea.transform.position, Quaternion.identity);
+        _missileClone.GetComponent<PlayerMissileScript>().targetPosition = targetPos;
+        _missileClone.GetComponent<PlayerMissileScript>().missleSpeed = _missleSpeed;
         AudioSource.PlayClipAtPoint(_launchSFX, _playerCamera.transform.position);
 
         
@@ -70,7 +72,7 @@ public class PlayerMissleManager : MonoBehaviour
         }
         
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(_reloadTime);
         _lowAmmoNotification.SetActive(false);
         _weaponUsable = true;
     }

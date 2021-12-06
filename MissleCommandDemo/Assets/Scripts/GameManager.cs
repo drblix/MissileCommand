@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _ufoEnemy;
 
     private GameObject _playerObject;
+
     [SerializeField] AudioClip _explosionSFX;
     [SerializeField] GameObject _enemyMissileManager;
     [SerializeField] GameObject _playerMissileManager;
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
         gameOver = true;
 
         _gameOverText.gameObject.SetActive(true);
-        _gameOverText.gameObject.GetComponent<RectTransform>().position = Vector2.MoveTowards(_gameOverText.transform.position, new Vector2(0f, 1.25f), 4f * Time.deltaTime);
 
         if (_playerMissileManager || _enemyMissileManager || _playerObject)
         {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
 
             foreach (GameObject missile in FindObjectsOfType<GameObject>())
             {
-                if (missile.name == "PlayerMissle(Clone)" || missile.name == "EnemyMissle(Clone)" || missile.name == "UFO(Clone)")
+                if (missile.name == "PlayerMissile(Clone)" || missile.name == "EnemyMissile(Clone)" || missile.name == "UFO(Clone)")
                 {
                     Destroy(missile);
                 }

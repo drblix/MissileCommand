@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMissleScript : MonoBehaviour
+public class PlayerMissileScript : MonoBehaviour
 {
-    [SerializeField] GameObject _missleTrail;
-    [SerializeField] GameObject _playerMissleExplosion;
+    [SerializeField] 
+    private GameObject _missileTrail;
+    [SerializeField] 
+    private GameObject _playerMissileExplosion;
+
     private GameObject _playerCamera;
 
     [SerializeField] AudioClip[] _explosionClips;
@@ -30,7 +33,6 @@ public class PlayerMissleScript : MonoBehaviour
             int clipNum = Random.Range(0, _explosionClips.Length);
             AudioSource.PlayClipAtPoint(_explosionClips[clipNum], _playerCamera.transform.position);
             AfterMissleDeath();
-            Destroy(this.gameObject);
         }
     }
 
@@ -50,8 +52,9 @@ public class PlayerMissleScript : MonoBehaviour
 
     private void AfterMissleDeath()
     {
-        Instantiate(_playerMissleExplosion, transform.position, Quaternion.identity);
-        _missleTrail.transform.parent = null;
-        _missleTrail.GetComponent<TrailRenderer>().autodestruct = true;
+        Instantiate(_playerMissileExplosion, transform.position, Quaternion.identity);
+        _missileTrail.transform.parent = null;
+        _missileTrail.GetComponent<TrailRenderer>().autodestruct = true;
+        Destroy(this.gameObject);
     }
 }

@@ -4,7 +4,7 @@ public class PlayerCursor : MonoBehaviour
 {
     // Referencing components n' stuff
     BoxCollider2D _cursorCollider;
-    PlayerMissleManager _playerMissleManager;
+    PlayerMissileManager _playerMissleManager;
 
     // Config
     [SerializeField]
@@ -13,7 +13,7 @@ public class PlayerCursor : MonoBehaviour
     private void Start() // Getting components
     {
         _cursorCollider = GetComponent<BoxCollider2D>();
-        _playerMissleManager = FindObjectOfType<PlayerMissleManager>();
+        _playerMissleManager = FindObjectOfType<PlayerMissileManager>();
     }
 
     private void Update()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMissleScript : MonoBehaviour
+public class EnemyMissileScript : MonoBehaviour
 {
     [SerializeField] GameObject _enemyExplosion;
     [SerializeField] AudioClip[] _explosionSFX;
@@ -23,7 +23,7 @@ public class EnemyMissleScript : MonoBehaviour
     private int randomCityNum;
     
 
-    private void Start()
+    private void Awake()
     {
         randomCityNum = Random.Range(0, _friendlyCityLocations.Length);
         _cityTargetVector = _friendlyCityLocations[randomCityNum];
@@ -43,13 +43,15 @@ public class EnemyMissleScript : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, _missileSpeed * Time.deltaTime);
     }
 
-    public void DestroyMissle(bool cityHit)
+    public void DestroyMissile(bool cityHit)
     {
         Instantiate(_enemyExplosion, transform.position, Quaternion.identity);
+
         if (cityHit)
         {
             AudioSource.PlayClipAtPoint(_explosionSFX[Random.Range(0, _explosionSFX.Length)], _playerCamera.transform.position);
         }
+
         Destroy(gameObject);
     }
 
@@ -92,7 +94,7 @@ public class EnemyMissleScript : MonoBehaviour
             }
 
             FindObjectOfType<CitiesManager>().DestroyCity(cityNum);
-            DestroyMissle(true);
+            DestroyMissile(true);
         }
     }
 }
