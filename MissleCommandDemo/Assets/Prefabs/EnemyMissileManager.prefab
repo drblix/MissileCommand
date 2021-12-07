@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4928923480044352036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4928923480044352042}
+  - component: {fileID: 4928923480044352043}
+  m_Layer: 0
+  m_Name: EnemyMissileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4928923480044352042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928923480044352036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4928923480044352043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928923480044352036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3117c8dbc9768d4bb22953d88e6d1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyMissile: {fileID: 4902149189112078892, guid: 5165b65581329164d84f07f00986cd0e, type: 3}
+  _splitterMissile: {fileID: 4902149189112078892, guid: d45d1257532605a479f181c3e88892ca, type: 3}
+  _enemyUFO: {fileID: 8560632100640482102, guid: 5a9651b2eb9ea914a981bc4d019cb3b2, type: 3}
+  missilesToSpawn: 8
+  gameOver: 0
+  _yCoordinateSpawn: 5.6
+  _maxXRange: 7.58
+  _minXRange: -8.62

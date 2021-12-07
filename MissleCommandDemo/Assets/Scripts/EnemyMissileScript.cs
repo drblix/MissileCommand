@@ -9,7 +9,7 @@ public class EnemyMissileScript : MonoBehaviour
     private GameObject _playerCamera;
 
     SpriteRenderer _playerRenderer;
-    public float _missileSpeed;
+    public float missileSpeed;
 
     private readonly Vector2[] _friendlyCityLocations = new Vector2[]
     {
@@ -25,14 +25,14 @@ public class EnemyMissileScript : MonoBehaviour
 
     private void Awake()
     {
-        randomCityNum = Random.Range(0, _friendlyCityLocations.Length);
+        randomCityNum = Mathf.RoundToInt(Random.Range(0, _friendlyCityLocations.Length - 1));
         _cityTargetVector = _friendlyCityLocations[randomCityNum];
         _playerRenderer = GetComponent<SpriteRenderer>();
         _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
 
-        if (_missileSpeed <= 0f)
+        if (missileSpeed <= 0f)
         {
-            _missileSpeed = 1f;
+            missileSpeed = 1f;
         }
         StartCoroutine(ChangeColor());
     }
@@ -40,7 +40,7 @@ public class EnemyMissileScript : MonoBehaviour
     
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, _missileSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, missileSpeed * Time.deltaTime);
     }
 
     public void DestroyMissile(bool cityHit)

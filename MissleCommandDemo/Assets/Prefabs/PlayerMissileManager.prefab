@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4998176814756919184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4998176814756919186}
+  - component: {fileID: 4998176814756919187}
+  m_Layer: 0
+  m_Name: PlayerMissileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4998176814756919186
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998176814756919184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4998176814756919187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998176814756919184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d1c42b309f9d14c9ba3a4b5c64f54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMissile: {fileID: 1502609063659697991, guid: 20f7ae73228453e4ba15ac8038749ad5, type: 3}
+  _missileSpawningArea: {fileID: 0}
+  _launchSFX: {fileID: 8300000, guid: 2912400d9ea40164b877c44365bbd765, type: 3}
+  _plrAmmoDisplay: {fileID: 0}
+  _lowAmmoNotification: {fileID: 0}
+  _ammoSprites:
+  - {fileID: -660875926510651519, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: 8983880942314921799, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -4575669053116694060, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: 18912972114886858, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -718360924061398086, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -3169663394588857884, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: 2104609027843115913, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: 5832591266473550171, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -3928313833484544034, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -2163925625391961677, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: -2934655699864470275, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  - {fileID: 1264459107217343097, guid: 9f4c5d1b06113cb48b93a1d0fe180ca1, type: 3}
+  _lowAmmo: {fileID: 8300000, guid: 98d9ec845b980124581cc3234580ebc2, type: 3}
+  _missleSpeed: 4
+  _reloadTime: 1

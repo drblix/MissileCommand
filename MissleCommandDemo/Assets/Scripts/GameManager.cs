@@ -10,24 +10,46 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text _gameOverText;
     [SerializeField] Text _scoreText;
 
-    [SerializeField] private GameObject _ufoEnemy;
+    [SerializeField] 
+    private GameObject _ufoEnemy;
+
+    
 
     private GameObject _playerObject;
 
-    [SerializeField] AudioClip _explosionSFX;
-    [SerializeField] GameObject _enemyMissileManager;
-    [SerializeField] GameObject _playerMissileManager;
-    [SerializeField] GameObject _playerMissileExplosion;
+    [SerializeField] 
+    private AudioClip _explosionSFX;
+    [SerializeField] 
+    private GameObject _enemyMissileManagerPrefab;
+    [SerializeField] 
+    private GameObject _playerMissileManagerPrefab;
+    [SerializeField] 
+    private GameObject _playerMissileExplosion;
+
+    private GameObject _playerMissileManagerScene;
+    private GameObject _enemyMissileManagerScene;
+
+    private LayerMask _missileLayer;
 
     private int _scoreTotal = 0;
+
+    public int currentMissiles = 6;
     public int currentLevel = 1;
+
+    /*
+     * levels 5+: background = (94, 4, 82) ground = (103, 200, 127)
+     */
 
     public bool gameOver = false;
 
-    private void Start()
+    private void Awake()
     {
         _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
-        StartCoroutine(SpawnUFO());
+        _missileLayer = LayerMask.GetMask("Missiles");
+        _enemyMissileManagerScene = GameObject.Find("EnemyMissileManager");
+        _playerMissileManagerScene = GameObject.Find("PlayerMissileManager");
+
+        StartCoroutine(LoadNextLevel());
     }
 
     private void Update()
@@ -41,16 +63,16 @@ public class GameManager : MonoBehaviour
 
         _gameOverText.gameObject.SetActive(true);
 
-        if (_playerMissileManager || _enemyMissileManager || _playerObject)
+        if (_playerMissileManagerScene || _enemyMissileManagerScene || _playerObject)
         {
-            Destroy(_playerMissileManager);
-            Destroy(_enemyMissileManager);
+            Destroy(_playerMissileManagerScene);
+            Destroy(_enemyMissileManagerScene);
             Instantiate(_playerMissileExplosion, _playerObject.transform.position, Quaternion.identity);
             AudioSource.PlayClipAtPoint(_explosionSFX, new Vector3(0f, 0.19f, -7.1f));
 
             foreach (GameObject missile in FindObjectsOfType<GameObject>())
             {
-                if (missile.name == "PlayerMissile(Clone)" || missile.name == "EnemyMissile(Clone)" || missile.name == "UFO(Clone)")
+                if (missile.layer == _missileLayer)
                 {
                     Destroy(missile);
                 }
@@ -58,8 +80,8 @@ public class GameManager : MonoBehaviour
 
             if (GameObject.Find("IdleSFXContainer(Clone)"))
             {
-                GameObject _container = GameObject.Find("IdleSFXContainer(Clone)");
-                Destroy(_container);
+                GameObject container = GameObject.Find("IdleSFXContainer(Clone)");
+                Destroy(container);
             }
         }
 
@@ -81,36 +103,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnUFO()
-    {
-        while (!gameOver)
-        {
-            int num = Mathf.RoundToInt(Random.Range(1f, 2f)); // generates random number
-
-            yield return new WaitForSeconds(Mathf.RoundToInt(Random.Range(12f, 25f))); // waits between 20 or 30 seconds (random)
-
-            if (gameOver)
-            {
-                break;
-            }
-
-            if (num == 2) // instantiates ufo if num == 2
-            {
-                Instantiate(_ufoEnemy, Vector2.zero, Quaternion.identity);
-            }
-        }
-    }
-
     private IEnumerator ReturnToMain()
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
     }
 
-    /*
+    
     private IEnumerator LoadNextLevel()
     {
+        yield return new WaitUntil(() => currentMissiles == 0);
+        Debug.Log("load next level");
 
+        GameObject enemyMissileManager = FindObjectOfType<EnemyMissileManager>().gameObject;
+
+        Destroy(enemyMissileManager);
+
+        int amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
+
+        while (amountOfEnemysLeft > 0)
+        {
+            Debug.Log(amountOfEnemysLeft);
+            yield return new WaitForSeconds(0.1f);
+            amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
+        }
+
+        yield return new WaitForSeconds(4f);
+
+        currentLevel += 1;
+
+        switch (currentLevel)
+        {
+            case var exp when currentLevel >= 5:
+                _playerObject.GetComponent<Camera>().backgroundColor = new Color(94f, 4f, 82f);
+                GameObject terrain = GameObject.Find("Terrain");
+                terrain.GetComponent<SpriteRenderer>().color = new Color(103f, 200f, 127f);
+                break;
+        }
+
+        ResetGame();
+        Debug.Log("can load next level now");
     }
-    */
+    
+    private void ResetGame()
+    {
+        _enemyMissileManagerScene = Instantiate(_enemyMissileManagerPrefab, new Vector2(0f, 0f), Quaternion.identity);
+        _playerMissileManagerScene = Instantiate(_playerMissileManagerPrefab, new Vector2(0f, 0f), Quaternion.identity);
+
+        _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn = currentLevel + 6;
+        currentMissiles = _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn;
+
+        StartCoroutine(LoadNextLevel());
+    }
+
 }

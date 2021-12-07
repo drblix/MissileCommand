@@ -15,7 +15,7 @@ public class SplitterMissileScript : MonoBehaviour
     private GameObject _missileTrail;
 
     private SpriteRenderer _playerRenderer;
-    public float _missileSpeed;
+    public float missileSpeed;
 
     private readonly Vector2[] _friendlyCityLocations = new Vector2[]
     {
@@ -33,14 +33,14 @@ public class SplitterMissileScript : MonoBehaviour
     private void Awake()
     {
         _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
-        _randomCityNum = Mathf.RoundToInt(Random.Range(0f, _friendlyCityLocations.Length));
+        _randomCityNum = Mathf.RoundToInt(Random.Range(0f, _friendlyCityLocations.Length - 1));
         _cityTargetVector = _friendlyCityLocations[_randomCityNum];
         _playerRenderer = GetComponent<SpriteRenderer>();
         _missileTrail = transform.Find("Trail").gameObject;
 
-        if (_missileSpeed <= 0f)
+        if (missileSpeed <= 0f)
         {
-            _missileSpeed = 1f;
+            missileSpeed = 1f;
         }
 
         StartCoroutine(ChangeColor());
@@ -50,7 +50,7 @@ public class SplitterMissileScript : MonoBehaviour
 
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, _missileSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _cityTargetVector, missileSpeed * Time.deltaTime);
     }
 
     public void DestroyMissile()

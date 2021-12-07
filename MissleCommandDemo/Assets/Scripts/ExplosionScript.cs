@@ -21,6 +21,7 @@ public class ExplosionScript : MonoBehaviour
             int randomNum = Random.Range(0, _explosionEffects.Length);
             AudioSource.PlayClipAtPoint(_explosionEffects[randomNum], _playerCamera.transform.position);
             FindObjectOfType<GameManager>().AddToScore(100);
+
             if (collision.GetComponent<EnemyMissileScript>())
             {
                 collision.GetComponent<EnemyMissileScript>().DestroyMissile(false);
@@ -32,6 +33,11 @@ public class ExplosionScript : MonoBehaviour
             else
             {
                 Debug.LogWarning("EnemyMissleScript not found!");
+            }
+
+            if (FindObjectOfType<EnemyMissileManager>() != null)
+            {
+                FindObjectOfType<EnemyMissileManager>().EnemyMissileDestroyed();
             }
         }
     }

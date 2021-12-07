@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class PlayerMissileManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _playerMissile;
-    [SerializeField] private GameObject _missileSpawningArea;
-    [SerializeField] private AudioClip _launchSFX;
-    [SerializeField] private SpriteRenderer _plrAmmoDisplay;
-    [SerializeField] private GameObject _lowAmmoNotification;
+    [SerializeField] 
+    private GameObject _playerMissile;
+    [SerializeField] 
+    private GameObject _missileSpawningArea;
+    [SerializeField] 
+    private AudioClip _launchSFX;
+    [SerializeField] 
+    private SpriteRenderer _plrAmmoDisplay;
+    [SerializeField] 
+    private GameObject _lowAmmoNotification;
 
     private GameObject _playerCamera;
 
@@ -28,9 +33,13 @@ public class PlayerMissileManager : MonoBehaviour
 
     private GameObject _missileClone;
 
-    private void Start()
+    private void Awake()
     {
         _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
+        _missileSpawningArea = GameObject.Find("Player").transform.Find("LaunchTransform").gameObject;
+        _plrAmmoDisplay = GameObject.Find("Player").transform.Find("AmmoDisplay").GetComponent<SpriteRenderer>();
+        _lowAmmoNotification = 
+
         _plrAmmoDisplay.sprite = _ammoSprites[11];
         _currentAmmo = 12;
     }

@@ -114,7 +114,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3460381305361870303}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -159,4 +159,3 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 94fda27500792a14bb1ac4b2e41fbf75, type: 3}
   - {fileID: 8300000, guid: 4aa5da1bff0556d4bbef0c9139cda517, type: 3}
   - {fileID: 8300000, guid: 87cd307db20d2aa4fab8a6d686802636, type: 3}
-  _playerCamera: {fileID: 4864894462103422147, guid: 05fb1f848664c4645b9335d79ac096b9, type: 3}
