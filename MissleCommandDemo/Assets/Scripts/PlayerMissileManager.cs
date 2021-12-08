@@ -38,7 +38,7 @@ public class PlayerMissileManager : MonoBehaviour
         _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         _missileSpawningArea = GameObject.Find("Player").transform.Find("LaunchTransform").gameObject;
         _plrAmmoDisplay = GameObject.Find("Player").transform.Find("AmmoDisplay").GetComponent<SpriteRenderer>();
-        _lowAmmoNotification = 
+        _lowAmmoNotification = GameObject.Find("MainGameCanvas").transform.Find("LowAmmo").gameObject;
 
         _plrAmmoDisplay.sprite = _ammoSprites[11];
         _currentAmmo = 12;
@@ -85,8 +85,6 @@ public class PlayerMissileManager : MonoBehaviour
         _lowAmmoNotification.SetActive(false);
         _weaponUsable = true;
     }
-
-
 
     public void Reset()
     {

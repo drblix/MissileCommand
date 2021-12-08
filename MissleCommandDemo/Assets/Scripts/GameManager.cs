@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] 
     private GameObject _ufoEnemy;
 
-    
-
     private GameObject _playerObject;
 
     [SerializeField] 
@@ -50,6 +48,7 @@ public class GameManager : MonoBehaviour
         _playerMissileManagerScene = GameObject.Find("PlayerMissileManager");
 
         StartCoroutine(LoadNextLevel());
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -132,6 +131,8 @@ public class GameManager : MonoBehaviour
 
         currentLevel += 1;
 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         switch (currentLevel)
         {
             case var exp when currentLevel >= 5:
@@ -141,19 +142,6 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        ResetGame();
-        Debug.Log("can load next level now");
-    }
-    
-    private void ResetGame()
-    {
-        _enemyMissileManagerScene = Instantiate(_enemyMissileManagerPrefab, new Vector2(0f, 0f), Quaternion.identity);
-        _playerMissileManagerScene = Instantiate(_playerMissileManagerPrefab, new Vector2(0f, 0f), Quaternion.identity);
-
-        _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn = currentLevel + 6;
-        currentMissiles = _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn;
-
         StartCoroutine(LoadNextLevel());
     }
-
 }
