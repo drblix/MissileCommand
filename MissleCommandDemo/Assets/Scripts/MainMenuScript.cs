@@ -22,6 +22,10 @@ public class MainMenuScript : MonoBehaviour
 
     private bool _canInteract = false;
     private bool _inCredits = false;
+    private bool _easterEggTriggered = false;
+
+    private int _cPressedAmount = 0;
+    private int _cTriggerAmount = 15;
 
     private void Awake()
     {
@@ -33,11 +37,13 @@ public class MainMenuScript : MonoBehaviour
         _mainCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
 
         StartCoroutine(IntroSequence());
+        StartCoroutine(ResetEasterEgg());
     }
 
     private void Update()
     {
         CheckInput();
+        CheckEasterEgg();
     }
 
     private void CheckInput()
@@ -60,6 +66,7 @@ public class MainMenuScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C) && _canInteract)
         {
+            _cPressedAmount++;
             AudioSource.PlayClipAtPoint(_selectSFX, _mainCamera.transform.position);
             if (!_credits.activeInHierarchy)
             {
@@ -82,6 +89,14 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    private void CheckEasterEgg()
+    {
+        Debug.Log(_cPressedAmount);
+        if (_cPressedAmount == 15)
+        {
+            Debug.Log("Easter egg triggered!");
+        }
+    }
 
     private IEnumerator IntroSequence()
     {
@@ -113,5 +128,14 @@ public class MainMenuScript : MonoBehaviour
         }
 
         SceneManager.LoadScene(1);
+    }
+
+    private IEnumerator ResetEasterEgg()
+    {
+        while (!_easterEggTriggered)
+        {
+            yield return new WaitForSeconds(5f);
+            _cPressedAmount = 0;
+        }
     }
 }
