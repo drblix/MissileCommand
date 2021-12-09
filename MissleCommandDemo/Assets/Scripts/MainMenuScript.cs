@@ -50,7 +50,6 @@ public class MainMenuScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("quitting");
             Application.Quit();
         }
 
@@ -61,7 +60,6 @@ public class MainMenuScript : MonoBehaviour
             _enterPlay.SetActive(false);
 
             StartCoroutine(StartGame());
-            Debug.Log("start game");
         }
 
         if (Input.GetKeyDown(KeyCode.C) && _canInteract)
@@ -91,10 +89,9 @@ public class MainMenuScript : MonoBehaviour
 
     private void CheckEasterEgg()
     {
-        Debug.Log(_cPressedAmount);
-        if (_cPressedAmount == 15)
+        if (_cPressedAmount == _cTriggerAmount)
         {
-            Debug.Log("Easter egg triggered!");
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -111,7 +108,6 @@ public class MainMenuScript : MonoBehaviour
         _creditsPrompt.SetActive(true);
         _enterPlay.SetActive(true);
         _canInteract = true;
-        Debug.Log("finished");
     }
 
     private IEnumerator StartGame()

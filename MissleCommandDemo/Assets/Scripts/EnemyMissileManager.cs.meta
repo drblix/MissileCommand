@@ -3,7 +3,10 @@ guid: d3117c8dbc9768d4bb22953d88e6d1c2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _enemyMissile: {fileID: 4902149189112078892, guid: 5165b65581329164d84f07f00986cd0e, type: 3}
+  - _splitterMissile: {fileID: 4902149189112078892, guid: d45d1257532605a479f181c3e88892ca, type: 3}
+  - _enemyUFO: {fileID: 8560632100640482102, guid: 5a9651b2eb9ea914a981bc4d019cb3b2, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

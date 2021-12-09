@@ -160,7 +160,7 @@ MonoBehaviour:
   _enemyMissileManagerPrefab: {fileID: 4928923480044352036, guid: bef4babd27abee8408f5eaf7266a1a92, type: 3}
   _playerMissileManagerPrefab: {fileID: 4998176814756919184, guid: 4408d353555ec16428bc146c2891cbec, type: 3}
   _playerMissileExplosion: {fileID: 3460381305361870303, guid: 9159b5255cae5ac44ac807f734d1be3e, type: 3}
-  currentMissiles: 6
+  currentMissiles: 7
   currentLevel: 1
   gameOver: 0
 --- !u!4 &66634345

@@ -42,18 +42,27 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (FindObjectsOfType<GameManager>().Length >= 2)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
         _missileLayer = LayerMask.GetMask("Missiles");
         _enemyMissileManagerScene = GameObject.Find("EnemyMissileManager");
         _playerMissileManagerScene = GameObject.Find("PlayerMissileManager");
 
         StartCoroutine(LoadNextLevel());
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
     {
         QuitGame();
+        CheckVariables();
     }
 
     public void GameOver()
@@ -102,6 +111,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void CheckVariables()
+    {
+        if (_mainGameCanvas == null)
+        {
+            _mainGameCanvas = GameObject.Find("MainGameCanvas").GetComponent<Canvas>();
+        }
+
+        if (_gameOverText == null)
+        {
+            _gameOverText = GameObject.Find("MainGameCanvas").transform.Find("GameOverText").GetComponent<Text>();
+        }
+
+        if (_scoreText == null)
+        {
+            _scoreText = GameObject.Find("MainGameCanvas").transform.Find("Score").GetComponent<Text>();
+        }
+
+        if (_playerObject == null)
+        {
+            _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
+        }
+    }
+
     private IEnumerator ReturnToMain()
     {
         yield return new WaitForSeconds(5f);
@@ -141,6 +173,20 @@ public class GameManager : MonoBehaviour
                 terrain.GetComponent<SpriteRenderer>().color = new Color(103f, 200f, 127f);
                 break;
         }
+
+        _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
+        _enemyMissileManagerScene = GameObject.Find("EnemyMissileManager");
+        _playerMissileManagerScene = GameObject.Find("PlayerMissileManager");
+
+        if (currentLevel <= 5)
+        {
+            currentMissiles = currentLevel + 6;
+        }
+
+        _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn = currentMissiles;
+        _scoreText.text = System.Convert.ToString(_scoreTotal);
+
+        Debug.Log("Level switch done");
 
         StartCoroutine(LoadNextLevel());
     }
