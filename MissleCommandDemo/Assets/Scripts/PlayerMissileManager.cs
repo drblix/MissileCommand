@@ -6,6 +6,8 @@ public class PlayerMissileManager : MonoBehaviour
 {
     [SerializeField] 
     private GameObject _playerMissile;
+    [SerializeField]
+    private GameObject _targetCrosshair;
     [SerializeField] 
     private GameObject _missileSpawningArea;
     [SerializeField] 
@@ -67,10 +69,18 @@ public class PlayerMissileManager : MonoBehaviour
     }
 
     private IEnumerator FireMissle(Vector2 targetPos)
-    {   
+    {
+        GameObject tempCrosshair;
+        GameObject tempNewEmptyObj;
+
+        tempNewEmptyObj = new GameObject("EnemyMissile");
         _missileClone = Instantiate(_playerMissile, _missileSpawningArea.transform.position, Quaternion.identity);
         _missileClone.GetComponent<PlayerMissileScript>().targetPosition = targetPos;
         _missileClone.GetComponent<PlayerMissileScript>().missleSpeed = _missleSpeed;
+        _missileClone.transform.SetParent(tempNewEmptyObj.transform);
+        tempCrosshair = Instantiate(_targetCrosshair, targetPos, Quaternion.identity);
+        tempCrosshair.transform.SetParent(tempNewEmptyObj.transform);
+
         AudioSource.PlayClipAtPoint(_launchSFX, _playerCamera.transform.position);
 
         

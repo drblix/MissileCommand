@@ -6,15 +6,20 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     // UI stuff
-    [SerializeField] Canvas _mainGameCanvas;
-    [SerializeField] Text _gameOverText;
-    [SerializeField] Text _scoreText;
 
+    [Header("UI elements")]
     [SerializeField] 
-    private GameObject _ufoEnemy;
+    private Canvas _mainGameCanvas;
+    [SerializeField] 
+    private Text _gameOverText;
+    [SerializeField] 
+    private Text _scoreText;
 
     private GameObject _playerObject;
 
+    [Header("Prefabs")]
+    [SerializeField] 
+    private GameObject _ufoEnemy;
     [SerializeField] 
     private AudioClip _explosionSFX;
     [SerializeField] 
@@ -31,14 +36,28 @@ public class GameManager : MonoBehaviour
 
     private int _scoreTotal = 0;
 
+    [Header("Game Stats")]
     public int currentMissiles = 6;
     public int currentLevel = 1;
+
+    public bool gameOver = false;
+
+    [Header("Level customizations")]
+    [SerializeField]
+    private Color _5background;
+    [SerializeField]
+    private Color _5ground;
+
+    // Misc variables
+    private bool _city01LastState;
+    private bool _city02LastState;
+    private bool _city03LastState;
+    private bool _city04LastState;
+
 
     /*
      * levels 5+: background = (94, 4, 82) ground = (103, 200, 127)
      */
-
-    public bool gameOver = false;
 
     private void Awake()
     {
@@ -63,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         QuitGame();
         CheckVariables();
+        CheckScene();
     }
 
     public void GameOver()
@@ -134,6 +154,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void CheckScene()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private IEnumerator ReturnToMain()
     {
         yield return new WaitForSeconds(5f);
@@ -147,36 +175,44 @@ public class GameManager : MonoBehaviour
         Debug.Log("load next level");
 
         GameObject enemyMissileManager = FindObjectOfType<EnemyMissileManager>().gameObject;
+        CitiesManager citiesManager = FindObjectOfType<CitiesManager>();
 
-        Destroy(enemyMissileManager);
+        enemyMissileManager.SetActive(false);
 
         int amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
 
         while (amountOfEnemysLeft > 0)
         {
-            Debug.Log(amountOfEnemysLeft);
             yield return new WaitForSeconds(0.1f);
             amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
         }
 
         yield return new WaitForSeconds(4f);
 
+        _city01LastState = citiesManager.city01Alive;
+        _city02LastState = citiesManager.city02Alive;
+        _city03LastState = citiesManager.city03Alive;
+        _city04LastState = citiesManager.city04Alive;
+
         currentLevel += 1;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
+        yield return new WaitUntil(() => FindObjectOfType<EnemyMissileManager>());
+
         switch (currentLevel)
         {
             case var exp when currentLevel >= 5:
-                _playerObject.GetComponent<Camera>().backgroundColor = new Color(94f, 4f, 82f);
+                _playerObject.GetComponent<Camera>().backgroundColor = _5background;
                 GameObject terrain = GameObject.Find("Terrain");
-                terrain.GetComponent<SpriteRenderer>().color = new Color(103f, 200f, 127f);
+                terrain.GetComponent<SpriteRenderer>().color = _5ground;
                 break;
         }
 
         _playerObject = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
-        _enemyMissileManagerScene = GameObject.Find("EnemyMissileManager");
-        _playerMissileManagerScene = GameObject.Find("PlayerMissileManager");
+        _enemyMissileManagerScene = FindObjectOfType<EnemyMissileManager>().gameObject;
+        _playerMissileManagerScene = FindObjectOfType<PlayerMissileManager>().gameObject;
+        _scoreText = GameObject.Find("MainGameCanvas").transform.Find("Score").GetComponent<Text>();
 
         if (currentLevel <= 5)
         {
@@ -188,6 +224,33 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Level switch done");
 
+        TransferCityStates();
         StartCoroutine(LoadNextLevel());
+    }
+
+    private void TransferCityStates()
+    {
+        CitiesManager citiesManager = FindObjectOfType<CitiesManager>();
+
+        if (!_city01LastState)
+        {
+            citiesManager.DestroyCity(1);
+        }
+        else if (!_city02LastState)
+        {
+            citiesManager.DestroyCity(2);
+        }
+        else if (!_city03LastState)
+        {
+            citiesManager.DestroyCity(3);
+        }
+        else if (!_city04LastState)
+        {
+            citiesManager.DestroyCity(4);
+        }
+        else
+        {
+            Debug.Log("wow your cities are all alive still!");
+        }
     }
 }

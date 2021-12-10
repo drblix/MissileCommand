@@ -163,6 +163,8 @@ MonoBehaviour:
   currentMissiles: 7
   currentLevel: 1
   gameOver: 0
+  _5background: {r: 0.36862746, g: 0.03137255, b: 0.32156864, a: 1}
+  _5ground: {r: 0.40392157, g: 0.78431374, b: 0.49803922, a: 1}
 --- !u!4 &66634345
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +492,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: db11005c231b0c64bad7f427b4b62d37, type: 3}
-  m_Color: {r: 0.9464768, g: 1, b: 0.8254717, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2145,6 +2147,14 @@ PrefabInstance:
     - target: {fileID: 5285672520539827569, guid: a6e694c9960c8cf48b34d8ec427179dd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285672521371272329, guid: a6e694c9960c8cf48b34d8ec427179dd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000033379
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285672521371272329, guid: a6e694c9960c8cf48b34d8ec427179dd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.51
       objectReference: {fileID: 0}
     - target: {fileID: 5285672521733855310, guid: a6e694c9960c8cf48b34d8ec427179dd, type: 3}
       propertyPath: m_Name

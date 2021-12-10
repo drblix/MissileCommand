@@ -55,6 +55,6 @@ public class PlayerMissileScript : MonoBehaviour
         Instantiate(_playerMissileExplosion, transform.position, Quaternion.identity);
         _missileTrail.transform.parent = null;
         _missileTrail.GetComponent<TrailRenderer>().autodestruct = true;
-        Destroy(this.gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

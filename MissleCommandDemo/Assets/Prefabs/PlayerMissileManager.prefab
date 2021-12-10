@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMissile: {fileID: 1502609063659697991, guid: 20f7ae73228453e4ba15ac8038749ad5, type: 3}
+  _targetCrosshair: {fileID: 8419574086191347812, guid: 3256747eac359bd4b8342622fdc4be71, type: 3}
   _missileSpawningArea: {fileID: 0}
   _launchSFX: {fileID: 8300000, guid: 2912400d9ea40164b877c44365bbd765, type: 3}
   _plrAmmoDisplay: {fileID: 0}

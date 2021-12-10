@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CitiesManager : MonoBehaviour
@@ -7,10 +5,11 @@ public class CitiesManager : MonoBehaviour
     [SerializeField] GameObject[] _friendlyCities;
     [SerializeField] Sprite _destroyedCitySprite;
 
-    private bool city01Alive = true;
-    private bool city02Alive = true;
-    private bool city03Alive = true;
-    private bool city04Alive = true;
+    [Header("City States")]
+    public bool city01Alive = true;
+    public bool city02Alive = true;
+    public bool city03Alive = true;
+    public bool city04Alive = true;
 
     private bool _gameOverCalled = false;
     
