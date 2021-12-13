@@ -64,4 +64,48 @@ public class CitiesManager : MonoBehaviour
                 break;
         }
     }
+
+    public void RefreshCities()
+    {
+        if (!city01Alive)
+        {
+            _friendlyCities[0].GetComponent<SpriteRenderer>().sprite = _destroyedCitySprite;
+        }
+
+        if (!city02Alive)
+        {
+            _friendlyCities[1].GetComponent<SpriteRenderer>().sprite = _destroyedCitySprite;
+        }
+
+        if (!city03Alive)
+        {
+            _friendlyCities[2].GetComponent<SpriteRenderer>().sprite = _destroyedCitySprite;
+        }
+
+        if (!city04Alive)
+        {
+            _friendlyCities[3].GetComponent<SpriteRenderer>().sprite = _destroyedCitySprite;
+        }
+    }
+
+    public bool CheckCity(int cityNum)
+    {
+        switch (cityNum)
+        {
+            case 1:
+                return city01Alive;
+
+            case 2:
+                return city02Alive;
+
+            case 3:
+                return city03Alive;
+
+            case 4:
+                return city04Alive;
+
+            default:
+                return true;
+        }
+    }
 }

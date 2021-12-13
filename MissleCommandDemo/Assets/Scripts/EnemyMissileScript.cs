@@ -20,13 +20,12 @@ public class EnemyMissileScript : MonoBehaviour
     };
 
     private Vector2 _cityTargetVector;
-    private int randomCityNum;
     
 
     private void Awake()
     {
-        randomCityNum = Mathf.RoundToInt(Random.Range(0, _friendlyCityLocations.Length - 1));
-        _cityTargetVector = _friendlyCityLocations[randomCityNum];
+
+        _cityTargetVector = ChooseTarget();
         _playerRenderer = GetComponent<SpriteRenderer>();
         _playerCamera = GameObject.Find("LowResSetup").transform.Find("Camera").gameObject;
 
@@ -93,8 +92,43 @@ public class EnemyMissileScript : MonoBehaviour
                     break;
             }
 
+            if (FindObjectOfType<EnemyMissileManager>() != null)
+            {
+                FindObjectOfType<EnemyMissileManager>().EnemyMissileDestroyed();
+            }
+
             FindObjectOfType<CitiesManager>().DestroyCity(cityNum);
             DestroyMissile(true);
         }
+    }
+
+    private Vector2 ChooseTarget() // Picks city target that isn't already destroyed
+    {
+        int randomCityNum = Mathf.RoundToInt(Random.Range(1, 5));
+        bool canContinue = false;
+        CitiesManager citiesManager = FindObjectOfType<CitiesManager>();
+
+        while (!canContinue)
+        {
+            Debug.Log(randomCityNum);
+            if (citiesManager.CheckCity(randomCityNum))
+            {
+                canContinue = true;
+                break;
+            }
+            else
+            {
+                randomCityNum = Mathf.RoundToInt(Random.Range(1, 5));
+            }
+        }
+
+        return randomCityNum switch // Returns thing
+        {
+            1 => _friendlyCityLocations[0],
+            2 => _friendlyCityLocations[1],
+            3 => _friendlyCityLocations[2],
+            4 => _friendlyCityLocations[3],
+            _ => _friendlyCityLocations[0],
+        };
     }
 }

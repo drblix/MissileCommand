@@ -166,12 +166,13 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     
     private IEnumerator LoadNextLevel()
     {
-        yield return new WaitUntil(() => currentMissiles == 0);
+        yield return new WaitUntil(() => currentMissiles == 0); // Waits until currentmissiles is equal to 0
         Debug.Log("load next level");
 
         GameObject enemyMissileManager = FindObjectOfType<EnemyMissileManager>().gameObject;
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
 
         int amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
 
-        while (amountOfEnemysLeft > 0)
+        while (amountOfEnemysLeft > 0) // Waits for all enemys to be destroyed before proceeding
         {
             yield return new WaitForSeconds(0.1f);
             amountOfEnemysLeft = FindObjectsOfType<EnemyMissileScript>().Length + FindObjectsOfType<UFOScript>().Length + FindObjectsOfType<SplitterMissileScript>().Length;
@@ -195,6 +196,8 @@ public class GameManager : MonoBehaviour
         _city04LastState = citiesManager.city04Alive;
 
         currentLevel += 1;
+
+        Vector2 lastCursorPos = FindObjectOfType<PlayerCursor>().gameObject.transform.position;
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
@@ -214,14 +217,15 @@ public class GameManager : MonoBehaviour
         _playerMissileManagerScene = FindObjectOfType<PlayerMissileManager>().gameObject;
         _scoreText = GameObject.Find("MainGameCanvas").transform.Find("Score").GetComponent<Text>();
 
-        if (currentLevel <= 5)
-        {
-            currentMissiles = currentLevel + 6;
-        }
+        currentMissiles = currentLevel + 6;        
 
         _enemyMissileManagerScene.GetComponent<EnemyMissileManager>().missilesToSpawn = currentMissiles;
         _scoreText.text = System.Convert.ToString(_scoreTotal);
 
+        yield return new WaitUntil(() => FindObjectOfType<PlayerCursor>());
+
+        FindObjectOfType<PlayerCursor>().gameObject.transform.position = lastCursorPos; // Sets cursor to where it was previously before loading
+        
         Debug.Log("Level switch done");
 
         TransferCityStates();
@@ -232,25 +236,11 @@ public class GameManager : MonoBehaviour
     {
         CitiesManager citiesManager = FindObjectOfType<CitiesManager>();
 
-        if (!_city01LastState)
-        {
-            citiesManager.DestroyCity(1);
-        }
-        else if (!_city02LastState)
-        {
-            citiesManager.DestroyCity(2);
-        }
-        else if (!_city03LastState)
-        {
-            citiesManager.DestroyCity(3);
-        }
-        else if (!_city04LastState)
-        {
-            citiesManager.DestroyCity(4);
-        }
-        else
-        {
-            Debug.Log("wow your cities are all alive still!");
-        }
+        citiesManager.city01Alive = _city01LastState;
+        citiesManager.city02Alive = _city02LastState;
+        citiesManager.city03Alive = _city03LastState;
+        citiesManager.city04Alive = _city04LastState;
+
+        citiesManager.RefreshCities();
     }
 }

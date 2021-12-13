@@ -136,7 +136,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 5a3ffb2fa426c41fcae1f5fd75f4f643, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -946,6 +946,10 @@ MonoBehaviour:
   - {fileID: 589241109}
   - {fileID: 814858232}
   _destroyedCitySprite: {fileID: 21300000, guid: 528986f42178d634fab89d27e65d457b, type: 3}
+  city01Alive: 1
+  city02Alive: 1
+  city03Alive: 1
+  city04Alive: 1
 --- !u!114 &1039818409 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5285672521371272328, guid: a6e694c9960c8cf48b34d8ec427179dd, type: 3}
